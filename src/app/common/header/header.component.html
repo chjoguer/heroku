@@ -1,0 +1,78 @@
+
+    <header class="header_area mb-5">
+        <div class="header_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-5">
+                        <ul class="nav social_icon " style=" text-align: center!important;">
+                            <li style="text-align: center!important;"><a href="#"><i class="fa fa-facebook" style="padding-top: 10px;"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter " style="padding-top: 10px;"></i></a></li>
+                            <li><a href="#"><i class="fa fa-dribbble" style="padding-top: 10px;"></i></a></li>
+                            <li><a href="#"><i class="fa fa-behance" style="padding-top: 10px;"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-7">
+                        <div class="top_btn d-flex justify-content-end">
+                            <a *ngIf="showProfile" [routerLink]="['/calendar']">Mi Perfil</a>
+                            <a *ngIf="showLogin" [routerLink]="['/login']" >Iniciar Sesion</a>
+                            <a *ngIf="showClose" href="javascript.void(0)" (click)="logout()" >Cerrar Sesion</a>
+                            <a href="#">Donaciones</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <a class="navbar-brand logo_h" href="index.html"><img src="assets/image/logo2.png"   alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav menu_nav ml-auto">
+                        <li [routerLinkActive]="['active']" class="nav-item"><a class="nav-link"  routerLink="/index">Inicio</a></li> 
+                        <li [routerLinkActive]="['active']" class="nav-item"><a class="nav-link" href="ministries.html">Recomendaciones</a></li>
+                        <li [routerLinkActive]="['active']" class="nav-item"><a class="nav-link" routerLink="/testimonios">Testimonios</a></li>
+                        <li [routerLinkActive]="['active']" class="nav-item"><a class="nav-link"  routerLink="/galeria">Galeria</a></li>
+
+                        <li class="nav-item submenu dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Event</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a class="nav-link" href="event.html">Event</a></li>
+                                <li class="nav-item"><a class="nav-link" href="event-details.html">Event Details</a></li>
+                            </ul>
+                        </li> 
+                        <li class="nav-item submenu dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Detalles</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a class="nav-link" href="about-us.html">Acerca de</a></li>
+                                <li class="nav-item"><a class="nav-link" href="donation.html">Donacion</a></li>
+                                
+                                <li class="nav-item"><a class="nav-link" routerLink="/galeria">Galería</a></li>
+                                <li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
+                            </ul>
+                        </li> 
+                        <li class="nav-item submenu dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Temas</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a class="nav-link" routerLink="/temas">Tema</a></li>
+                                <li class="nav-item"><a class="nav-link"  routerLink="/contact">Todos los temas</a></li>
+                            </ul>
+                        </li> 
+                        
+                        <li [routerLinkActive]="['active']" class="nav-item"><a class="nav-link" routerLink="/contact">Contactanos</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="nav-item"><a href="#" class="search"><i class="lnr lnr-magnifier"></i></a></li>
+                    </ul>
+                </div> 
+            </div>
+        </nav>
+       </div>
+    </header>
+    

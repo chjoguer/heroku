@@ -1,0 +1,143 @@
+ <!--================Breadcrumb Area =================-->
+ <section class="breadcrumb_area br_image " style="margin-top: 7rem !important;">
+    <div class="container">
+        <div class="page-cover text-center">
+            <h2 class="page-cover-tittle">Nuestra Galeria</h2>
+            <ol class="breadcrumb">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="active">Glaria</li>
+            </ol>
+        </div>
+    </div>
+</section>
+<!--================Breadcrumb Area =================-->
+<div>
+<ngb-carousel *ngIf="images3"  style="width: 800px!important; margin: auto; ">
+    <ng-template ngbSlide  style="height: 380px!important;">
+      <div class="picsum-img-wrapper">
+        <img [src]="images3[0]" alt="Random first slide">
+      </div>
+      <div class="carousel-caption">
+        <h3>First slide label</h3>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="images3[1]" alt="Random second slide">
+      </div>
+      <div class="carousel-caption">
+        <h3>Second slide label</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="images3[2]" alt="Random third slide">
+      </div>
+      <div class="carousel-caption">
+        <h3>Third slide label</h3>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      </div>
+    </ng-template>
+</ngb-carousel>
+</div>
+<!--================Breadcrumb Area =================-->
+<section  class="gallery_area section_gap">
+    <div  class="container">
+        <div  class="row imageGallery1" id="gallery" >
+            <div *ngFor="let img of images | paginate: { itemsPerPage: 9, currentPage: p  }" class="col-md-4 gallery_item">
+                <div  class="gallery_img">
+                    <img src="http://127.0.0.1:8000/media/{{img.image}}" style="width: 370px!important; height: 330px!important;"  alt="">
+                    <div class="hover">
+                        <a class="light" href="../../../assets/image/gallery/01.jpg"><i class="fa fa-expand"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="col-md-4 gallery_item">
+                <div class="gallery_img">
+                    <img  src="http://127.0.0.1:8000/media/{{img.image}}" style="width: 370px!important; height: 200px!important;" alt="">
+                    <div class="hover">
+                        <a class="light" href="../../../assets/image/gallery/02.jpg"><i class="fa fa-expand"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 gallery_item">
+                <div class="gallery_img">
+                    <img  src="http://127.0.0.1:8000/media/{{img.image}}" style="width: 370px!important; height: 330px!important;" alt="">
+                    <div class="hover">
+                        <a class="light" href="../../../assets/image/gallery/03.jpg"><i class="fa fa-expand"></i></a>
+                    </div>
+                </div>
+            </div> -->
+            <!-- <div class="col-md-4 gallery_item"> 
+                <div class="gallery_img">
+                    <img src="../../../assets/image/gallery/04.jpg" alt="">
+                    <div class="hover">
+                        <a class="light" href="../../../assets/image/gallery/04.jpg"><i class="fa fa-expand"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 gallery_item">
+                <div class="gallery_img">
+                    <img src="../../../assets/image/gallery/05.jpg" alt="">
+                    <div class="hover">
+                        <a class="light" href="../../../assets/image/gallery/05.jpg"><i class="fa fa-expand"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 gallery_item">
+                <div class="gallery_img">
+                    <img src="../../../assets/image/gallery/06.jpg" alt="">
+                    <div class="hover">
+                        <a class="light" href="../../../assets/image/gallery/06.jpg"><i class="fa fa-expand"></i></a>
+                    </div>
+                </div>
+            </div>  -->
+        </div>
+        <pagination-controls (pageChange)="p = $event" style="text-align: center; margin: auto;" 
+        maxSize="6"
+        directionLinks="true"
+        autoHide="true"
+        responsive="true"
+        previousLabel="Anterior"
+        nextLabel="Siguiente"
+        ></pagination-controls>
+
+    </div>
+</section>
+
+
+<!--================Gallery Area =================-->
+<!-- 
+<ngb-carousel *ngIf="images3"  style="width: 250px!important; text-align: center; justify-content: center; ">
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="images3[0]" alt="Random first slide">
+      </div>
+      <div class="carousel-caption">
+        <h3>First slide label</h3>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="images3[1]" alt="Random second slide">
+      </div>
+      <div class="carousel-caption">
+        <h3>Second slide label</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="images3[2]" alt="Random third slide">
+      </div>
+      <div class="carousel-caption">
+        <h3>Third slide label</h3>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      </div>
+    </ng-template>
+</ngb-carousel> -->

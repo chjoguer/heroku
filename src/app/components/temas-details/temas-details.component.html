@@ -1,0 +1,181 @@
+ 
+         <!--================Header Area =================-->
+        <header class="header_area"></header>
+        <!--================Header Area =================-->
+        <!--================Breadcrumb Area =================-->
+        <section class="breadcrumb_area blog_banner_two">
+            <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+            <div class="container">
+                <div class="page-cover text-center">
+                    <h2 class="page-cover-tittle f_48">Blog Details page</h2>
+                    <ol class="breadcrumb">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li class="active">Blog Details</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        <!--================Breadcrumb Area =================-->
+        <!--================Blog Area =================-->
+        <section class="blog_area single-post-area">
+            <div class="container">
+                <div class="row">
+                    <div *ngFor="let tema of tema_current" class="col-lg-8 posts-list">
+                        <div class="single-post row">
+                            <div class="col-lg-12">
+                                <div class="feature-img">
+                                    <img class="img-fluid" src="http://127.0.0.1:8000/media/{{images_temas[0].image}}" style="width:800px; height:400px; object-fit: cover!important;"  alt="images">
+                                </div>		
+                                <div class="fb-like" data-href="http://chjoguer.pythonanywhere.com/" data-width="" data-layout="button_count"  data-action="like" data-size="small" data-share="true"></div>
+							
+                            </div>
+
+                            <div   class="col-lg-12 col-md-12 blog_details">
+                                <h2>{{tema.titulo| titlecase}}</h2>
+                              
+                                <div [innerHTML]="tema.descripcion" style="text-align: justify;"></div>
+
+                            </div>
+                            <div class="col-lg-12">
+                                <iframe class="col-12" [src]="video"
+                                width="560" height="315" frameborder="0" allowfullscreen>
+                                </iframe>
+                                
+                            </div>
+                        </div>
+                        <div class="comments-area">
+                            <h4>Comentarios</h4>
+                            <div class="comment-list">
+                                <div class="single-comment justify-content-between d-flex">
+                                    <div class="user justify-content-between d-flex">
+                                        <div class="thumb">
+                                            <img src="image/blog/c1.jpg" alt="">
+                                        </div>
+                                        <div class="desc">
+                                            <h5><a href="#">Emilly Blunt</a></h5>
+                                            <p class="date">December 4, 2017 at 3:12 pm </p>
+                                            <p class="comment">
+                                                Never say goodbye till the end comes!
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="reply-btn">
+                                           <a href="" class="btn-reply text-uppercase">reply</a> 
+                                    </div>
+                                </div>
+                            </div>	
+                            <div class="comment-list">
+                                <div class="single-comment justify-content-between d-flex">
+                                    <div class="user justify-content-between d-flex">
+                                        <div class="thumb">
+                                            <img src="image/blog/c4.jpg" alt="">
+                                        </div>
+                                        <div class="desc">
+                                            <h5><a href="#">Maria Luna</a></h5>
+                                            <p class="date">December 4, 2017 at 3:12 pm </p>
+                                            <p class="comment">
+                                                Never say goodbye till the end comes!
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="reply-btn">
+                                           <a href="" class="btn-reply text-uppercase">reply</a> 
+                                    </div>
+                                </div>
+                            </div>	
+                            <div class="comment-list">
+                                <div class="single-comment justify-content-between d-flex">
+                                    <div class="user justify-content-between d-flex">
+                                        <div class="thumb">
+                                            <img src="image/blog/c5.jpg" alt="">
+                                        </div>
+                                        <div class="desc">
+                                            <h5><a href="#">Ina Hayes</a></h5>
+                                            <p class="date">December 4, 2017 at 3:12 pm </p>
+                                            <p class="comment">
+                                                Never say goodbye till the end comes!
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="reply-btn">
+                                           <a href="" class="btn-reply text-uppercase">reply</a> 
+                                    </div>
+                                </div>
+                            </div>	                                             				
+                        </div>
+                        <div class="comment-form">
+                            <h4>Realiza tu comentario</h4>
+                            <form>
+                                <!-- <div class="form-group form-inline">
+                                  <div class="form-group col-lg-6 col-md-6 name">
+                                    <input type="text" class="form-control" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
+                                  </div>
+                                  <div class="form-group col-lg-6 col-md-6 email">
+                                    <input type="email" class="form-control" id="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+                                  </div>										
+                                </div> -->
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="subject" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
+                                </div>
+                                <a href="#" class="primary-btn button_hover">Post Comment</a>	
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog_right_sidebar">
+                            <aside class="single-sidebar-widget newsletter_widget">
+                                <h4 class="widget_title">Consejerías</h4>
+                                <p>
+                                    Ofrecemos nuestra ayuda para que puedas hablar con nosotros
+                                    acerca de estos temas
+                                </p>
+                                <div class="form-group d-flex flex-row">
+                                    <a (click)="goToConsejerias()"  class="col-12 bbtns info">Solicitar</a>
+                                    
+                                </div>
+                                <div *ngIf="message" class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong>Lo sentimos!</strong> Debes de iniciar sesion para poder solicitar consejerias.
+                                </div>	
+
+                                <div class="br"></div>							
+                            </aside>
+                            
+                            
+                            <aside class="single_sidebar_widget popular_post_widget">
+                                <h3 class="widget_title">Más Temas</h3>
+                                <div *ngFor="let tema of tema_by_categorys" class="media post_item">
+                                    <!-- <img src="http://127.0.0.1:8000" alt="post"> -->
+                                    <div class="media-body">
+                                        <a [routerLink]="['/tema-details',tema.id_tema,tema.tema_categoria_id ]"><h3>{{tema.titulo}}</h3></a>
+                                        <p>{{tema.fecha}}</p>
+                                    </div>
+                                </div>
+                                                               
+                                <div class="br"></div>
+                            </aside>
+                            <aside class="single_sidebar_widget ads_widget">
+                                <a href="#"><img class="img-fluid" src="image/blog/add.jpg" alt=""></a>
+                                <div class="br"></div>
+                            </aside>
+                            <aside  class="single_sidebar_widget post_category_widget">
+                                <h4 class="widget_title">Otras Categorias</h4>
+                                <ul  class="list_style cat-list">
+                                    <li *ngFor="let ct of categorias">
+                                    <a  [routerLink]="['/temas',ct.id_categoria_tema ]" class="d-flex justify-content-between">
+                                            <p>{{ct.nombre_categoria}}</p>
+                                            <p>37</p>
+                                        </a>
+                                    </li>															
+                                </ul>
+                                <div class="br"></div>
+                            </aside>      
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================Blog Area =================-->
