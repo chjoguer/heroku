@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
   }
   logout(){
     this.service_login.logout();
-    window.location.reload();
+    location.href = "http://familyec.pythonanywhere.com/";
     console.log(this.service_login.authInstance.currentUser.get())
   }
  
