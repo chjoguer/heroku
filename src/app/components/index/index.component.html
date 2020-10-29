@@ -2,11 +2,43 @@
 <section class=" " style="margin-top: 7rem !important;">
     <div class=" ">
         <div class="">
+            <!-- <ngb-carousel *ngIf="images3"  style="width: 250px!important; text-align: center; justify-content: center;position: absolute;z-index: 9999; margin-top: 220px;">
+                <button type="button" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button> 
+                <ng-template ngbSlide >
+                  <div class="picsum-img-wrapper"  style="height: 380px!important;">
+                    <img [src]="images3[0]" alt="Random first slide">
+                  </div>
+                  <div class="carousel-caption">
+                    <h3>First slide label</h3>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                  </div>
+                </ng-template>
+                <ng-template ngbSlide  style="height: 380px!important;">
+                  <div class="picsum-img-wrapper"  style="height: 380px!important;">
+                    <img [src]="images3[1]" alt="Random second slide">
+                  </div>
+                  <div class="carousel-caption">
+                    <h3>Second slide label</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  </div>
+                </ng-template>
+                <ng-template ngbSlide  >
+                  <div class="picsum-img-wrapper"  style="height: 380px!important;">
+                    <img [src]="images3[2]" alt="Random third slide">
+                  </div>
+                  <div class="carousel-caption">
+                    <h3>Third slide label</h3>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                  </div>
+                </ng-template>
+            </ngb-carousel> -->
             <div class="">
                 <ngb-carousel *ngIf="images3">
                     <ng-template *ngFor="let tema of _temas" ngbSlide>
                         <div class="picsum-img-wrapper">
-                            <img class="img-cau" src="http://127.0.0.1:8000{{tema.image}}" style="object-fit: cover!important;" alt="Random first slide">
+                            <img class="img-cau" src="{{url}}{{tema.image}}" style="object-fit: cover!important;" alt="Random first slide">
                         </div>
                         <div class="carousel-caption">
                             <div class="banner_content">
@@ -25,12 +57,13 @@
 
 <!--================banner Area =================-->
 <section class="blog_categorie_area">
+    
     <div *ngIf="_temas?.length" class="container">
         <div class="row">
             <div *ngFor="let tema of _temas" class="col-md-6" style="margin-top: 15px;">
                 <div class="categories_post">
                     <!-- <img src="../../../assets/image/blog/cat-post/cat-post-3.jpg" alt="post"> -->
-                    <img src="http://127.0.0.1:8000{{tema.image}}"
+                    <img src="{{url}}{{tema.image}}"
                         style="width: 468px!important; height: 200px!important; object-fit: cover!important;" alt="post">
                     <div class="categories_details">
                         <div class="categories_text">
@@ -43,6 +76,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
             <!-- <div class="col-md-6 ">
                     <div class="categories_post">
@@ -84,6 +118,7 @@
         </div>
     </div>
 </section>
+
 <!--================Event Date Area =================-->
 <section class="event_date_area mt-5" style="margin-top: 4rem !important;">
     <div class="container">
@@ -141,7 +176,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img class="" src="http://127.0.0.1:8000{{tema.image}}" style="width: 570px;height: 300px; object-fit: cover!important;" alt="Random first slide">
+                        <img class="" src="{{url}}{{tema.image}}" style="width: 570px;height: 300px; object-fit: cover!important;" alt="Random first slide">
                     </div>
                     </div>
                 </ng-template>
@@ -185,7 +220,7 @@
 <!--================Features Area =================-->
 
 <!--================Sermons work Area =================-->
-<section class="sermons_work_area section_gap">
+<!-- <section class="sermons_work_area section_gap">
     <div class="container">
         <div class="section_title text-center">
             <h2>Sermons This Week</h2>
@@ -260,35 +295,96 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!--================Sermons work Area=================-->
+<section class="team_area section_gap">
+    <div class="container">
+        <div class="section_title text-center">
+            <h2>Nosotros</h2>
+            <p>Colaboradores que ayudan a mantener este sitio</p>
+        </div>
+        <div class="row mb_30">
+            <div class="col-md-3 col-sm-6">
+                <div class="team_item">
+                    <div class="team_img">
+                        <img src="../../../assets/image/team1.jpg" alt="team">
+                        <ul class="list_style">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="content">
+                        <h3>Philip Goodwin</h3>
+                        <p>Ing. Mecanica</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="team_item">
+                    <div class="team_img">
+                        <img src="../../../assets/image/team2.jpg" alt="team">
+                        <ul class="list_style">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="content">
+                        <h3>Duane Lewis</h3>
+                        <p>Ing. Biologia</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="team_item">
+                    <div class="team_img">
+                        <img src="../../../assets/image/team5.jpg" alt="team">
+                        <ul class="list_style">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="content">
+                        <h3>Jose Austin</h3>
+                        <p>Lic. Cultura</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="team_item">
+                    <div class="team_img">
+                        <img src="../../../assets/image/team3.jpg" alt="team">
+                        <ul class="list_style">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="content">
+                        <h3>Leroy Lopez</h3>
+                        <p>Ing. Alimentos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <!--================Donate Area=================-->
 <section class="donate_area">
     <div class="container">
         <div class="row">
             <div class="col-md-6 d-flex align-self-center">
                 <div class="donate_content ">
-                    <h2>Your donation can save <br>many lives</h2>
-                    <p>The French Revolution constituted for the conscience of the dominant aristocratic class a fall
-                        from innocence.</p>
+                    <h2> Tus Donaciones<br>Ayudan a Mantener Este Sitio</h2>
+                    <p>Nos ganamos la vida con lo que recibimos, pero hacemos la vida con lo que damos...[John Maxwell].</p>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="donation_form">
-                    <h3>How much would you like to donate?</h3>
-                    <div class="form-group">
-                        <input type='text' class="form-control" placeholder="$5" />
-                    </div>
-                    <div class="form-group">
-                        <input type='text' class="form-control" placeholder="$5" />
-                    </div>
-                    <div class="form-group">
-                        <input type='text' class="form-control" placeholder="$5" />
-                    </div>
-                    <div class="form-group">
-                        <input type='text' class="form-control" placeholder="Any" />
-                    </div>
-                    <a href="#" class="btn_hover btn_hover_two">Donate Now</a>
+                    <h3>Quieres realizar una donación?</h3>
+                    <a href="#" class="btn_hover btn_hover_two">Donar</a>
                 </div>
             </div>
         </div>
@@ -301,42 +397,66 @@
     <div class="container">
         <div class="section_title text-center">
             <h2>Redes Sociales</h2>
-            <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast</p>
+            <p>Redes sociales en las que puedes encotrar muy buena informacion</p>
         </div>
         <div class="row">
             <div class="col-md-4">
+                <!-- <div class="">
+                    <ngb-carousel *ngIf="images3"  style="width: 250px!important; text-align: center; justify-content: center;">
+                        <ng-template ngbSlide >
+                          <div class="picsum-img-wrapper"  style="height: 380px!important;">
+                            <img [src]="images3[0]" alt="Random first slide">
+                          </div>
+                          <div class="carousel-caption">
+                            <h3>Donacion</h3>
+                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                          </div>
+                        </ng-template>
+                        <ng-template ngbSlide  style="height: 380px!important;">
+                          <div class="picsum-img-wrapper"  style="height: 380px!important;">
+                            <img [src]="images3[1]" alt="Random second slide">
+                          </div>
+                          <div class="carousel-caption">
+                            <h3>Donacionl</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                          </div>
+                        </ng-template>
+                        <ng-template ngbSlide  >
+                          <div class="picsum-img-wrapper"  style="height: 380px!important;">
+                            <img [src]="images3[2]" alt="Random third slide">
+                          </div>
+                          <div class="carousel-caption">
+                            <h3>Donacion</h3>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                          </div>
+                        </ng-template>
+                    </ngb-carousel>                   
+                </div> -->
                 <div class="event_post">
-                    <img src="image/blog1.jpg" alt="">
-                    <a href="#">
-                        <h2 class="event_title">Spreading Peace to world</h2>
+                    <a class="twitter-timeline"
+                        width="300" height="400"                   
+                        href="https://twitter.com/confepec"
+                        data-chrome="nofooter noborders">
+                         Tweets by @vaticannews_es
                     </a>
-                    <ul class="list_style sermons_category event_category">
-                        <li><i class="lnr lnr-user"></i>Saturday, 5th may, 2018</li>
-                        <li><i class="lnr lnr-apartment"></i>Rocky beach Church</li>
-                        <li><i class="lnr lnr-location"></i>Santa monica, Los Angeles, USA</li>
-                    </ul>
-                    <a href="#" class="btn_hover">View Details</a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="event_post">
-                    <img src="image/blog1.jpg" alt="">
-                    <a href="#">
-                        <h2 class="event_title">Spreading Peace to world</h2>
-                    </a>
-                    <ul class="list_style sermons_category event_category">
-                        <li><i class="lnr lnr-user"></i>Saturday, 5th may, 2018</li>
-                        <li><i class="lnr lnr-apartment"></i>Rocky beach Church</li>
-                        <li><i class="lnr lnr-location"></i>Santa monica, Los Angeles, USA</li>
-                    </ul>
-                    <a href="#" class="btn_hover">View Details</a>
+                    <div class="event_post">
+                        <a class="twitter-timeline"
+                            width="300" height="400"                   
+                            href="https://twitter.com/catolicos_es"
+                            data-chrome="nofooter noborders">
+                             Tweets by @vaticannews_es
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="event_post">
                     <a class="twitter-timeline"
-                        width="300" height="400"
-                    
+                        width="300" height="400"                   
                         href="https://twitter.com/vaticannews_es"
                         data-chrome="nofooter noborders">
                          Tweets by @vaticannews_es

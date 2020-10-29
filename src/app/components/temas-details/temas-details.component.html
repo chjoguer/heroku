@@ -7,11 +7,10 @@
             <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
             <div class="container">
                 <div class="page-cover text-center">
-                    <h2 class="page-cover-tittle f_48">Blog Details page</h2>
+                    <h2 class="page-cover-tittle f_48">Temas</h2>
                     <ol class="breadcrumb">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li class="active">Blog Details</li>
+                        <li><a href="blog.html">Tema</a></li>
                     </ol>
                 </div>
             </div>
@@ -25,15 +24,15 @@
                         <div class="single-post row">
                             <div class="col-lg-12">
                                 <div class="feature-img">
-                                    <img class="img-fluid" src="http://127.0.0.1:8000/media/{{images_temas[0].image}}" style="width:800px; height:400px; object-fit: cover!important;"  alt="images">
+                                    <img class="img-fluid" src="{{url}}/media/{{images_temas[0].image}}" style="width:800px; height:400px; object-fit: cover!important;"  alt="images">
                                 </div>		
-                                <div class="fb-like" data-href="http://chjoguer.pythonanywhere.com/" data-width="" data-layout="button_count"  data-action="like" data-size="small" data-share="true"></div>
+                                <!-- <div class="fb-like" data-href="http://chjoguer.pythonanywhere.com/" data-width="" data-layout="button_count"  data-action="like" data-size="small" data-share="true"></div> -->
 							
                             </div>
 
                             <div   class="col-lg-12 col-md-12 blog_details">
                                 <h2>{{tema.titulo| titlecase}}</h2>
-                              
+                                <p>xx{{url}}</p>
                                 <div [innerHTML]="tema.descripcion" style="text-align: justify;"></div>
 
                             </div>
@@ -150,7 +149,8 @@
                                 <div *ngFor="let tema of tema_by_categorys" class="media post_item">
                                     <!-- <img src="http://127.0.0.1:8000" alt="post"> -->
                                     <div class="media-body">
-                                        <a [routerLink]="['/tema-details',tema.id_tema,tema.tema_categoria_id ]"><h3>{{tema.titulo}}</h3></a>
+                                        <a [routerLink]="['/tema-details',tema.id_tema,tema.tema_categoria_id]">   
+                                         <h3>{{tema.titulo}}</h3></a>
                                         <p>{{tema.fecha}}</p>
                                     </div>
                                 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 import { CategoiraTemaService } from '../temas-details/services/categoira-tema.service';
 import { TemaService } from '../temas-details/services/tema.service';
 
@@ -13,6 +14,8 @@ export class TemasComponent implements OnInit {
   categorias:any=[];
   p:number =1;
   id_category:any;
+  private url  = environment.apiUrl;
+
   constructor(
     private service_tema:TemaService,
     private service_categorias: CategoiraTemaService,
@@ -22,6 +25,7 @@ export class TemasComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.activatedRoute.paramMap.subscribe(params => {
       this.id_category=this.activatedRoute.snapshot.params.id_categoria;
       this.service_tema.get_temas_category(this.id_category).subscribe(data=>{
@@ -43,5 +47,10 @@ export class TemasComponent implements OnInit {
       this.categorias=data;
     })
   }
-
+  selectedItem:any;
+  listClick(event, newValue) {
+    console.log(newValue);
+    this.selectedItem = newValue;  // don't forget to update the model here
+    // ... do other stuff here ...
+}
 }

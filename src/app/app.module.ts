@@ -25,15 +25,26 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { FlatpickrModule } from 'angularx-flatpickr';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { CalendarDateFormatter, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { PoliticasComponent } from './components/politicas/politicas.component';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
+import {CalendarNativeDateFormatter, DateFormatterParams,CalendarModule} from 'angular-calendar';
+
+class CustomDateFormatter extends CalendarNativeDateFormatter {
+
+  public dayViewHour({date, locale}: DateFormatterParams): string {
+    // change this to return a different date format
+    return new Intl.DateTimeFormat(locale, {hour: 'numeric'}).format(date);
+  }
+
+}
 
 @NgModule({
   declarations: [
@@ -65,6 +76,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NgbModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    FlatpickrModule.forRoot(),
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
@@ -72,7 +84,9 @@ import { ReactiveFormsModule } from '@angular/forms';
    
   ],
 
-  providers: [{provide : LocationStrategy , useClass: HashLocationStrategy}],
+  providers: [{provide : LocationStrategy , useClass: HashLocationStrategy}, 
+    {provide: CalendarDateFormatter, useClass: CustomDateFormatter}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

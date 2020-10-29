@@ -13,8 +13,11 @@ import {
   isSameDay,
   isSameMonth,
   addHours,
+  startOfMonth,
+  startOfWeek,
+  endOfWeek,
 } from 'date-fns';
-import { Subject } from 'rxjs';
+import { from, Observable, Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   CalendarEvent,
@@ -25,6 +28,11 @@ import {
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 
+import flatpickr from 'flatpickr';
+import { Spanish } from 'flatpickr/dist/l10n/es';
+import { HttpClient } from '@angular/common/http';
+import {  map } from 'rxjs/operators';
+import {AgendarService} from './service/agendar.service'
 registerLocaleData(localeEs);
 const colors: any = {
   red: {
@@ -40,6 +48,16 @@ const colors: any = {
     secondary: '#FDF1BA',
   },
 };
+interface Consejeria {
+  id: number;
+  usuario: string;
+  empieza: string;
+  termina: string;
+  tema: string;
+  correo: string;
+  estado: number;
+}
+
 
 @Component({
   selector: 'mwl-demo-component',
@@ -50,81 +68,29 @@ const colors: any = {
   
 })
 export class CalendarComponent implements OnInit {
-  ngOnInit(): void {
+  
+
+   flatpickrFactory() {
+    flatpickr.localize(Spanish);
+    return flatpickr;
   }
   locale: string = 'es';
-
+  showMessage:boolean=false;
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
 
   view: CalendarView = CalendarView.Month;
-
   CalendarView = CalendarView;
-
   viewDate: Date = new Date();
-
   modalData: {
     action: string;
     event: CalendarEvent;
   };
 
-  actions: CalendarEventAction[] = [
-    {
-      label: '<i class="fas fa-fw fa-pencil-alt"></i>',
-      a11yLabel: 'Edit',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
-      },
-    },
-    {
-      label: '<i class="fas fa-fw fa-trash-alt"></i>',
-      a11yLabel: 'Delete',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter((iEvent) => iEvent !== event);
-        this.handleEvent('Deleted', event);
-      },
-    },
-  ];
-
+  events$: Observable<CalendarEvent<{ consejeria: Consejeria }>[]>;
   refresh: Subject<any> = new Subject();
-
-  events: CalendarEvent[] = [
-    {
-      start: new Date(),
-      end: new Date(),
-      title: 'Familia',
-      actions: this.actions,
-      // allDay: true,
-      // resizable: {
-      //   beforeStart: true,
-      //   afterEnd: true,
-      // },
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'Amigos',
-      actions: this.actions,
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'Esposos',
-      allDay: true,
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: addHours(new Date(), 2),
-      title: 'Amistades',
-      // actions: this.actions,
-      // resizable: {
-      //   beforeStart: true,
-      //   afterEnd: true,
-      // },
-    },
-  ];
-
   activeDayIsOpen: boolean = true;
 
-  constructor(private modal: NgbModal) {}
+  constructor(private modal: NgbModal,private http: HttpClient,private service_agendar:AgendarService) {}
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -140,48 +106,34 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  eventTimesChanged({
-    event,
-    newStart,
-    newEnd,
-  }: CalendarEventTimesChangedEvent): void {
-    this.events = this.events.map((iEvent) => {
-      if (iEvent === event) {
-        return {
-          ...event,
-          start: newStart,
-          end: newEnd,
-        };
-      }
-      return iEvent;
-    });
-    this.handleEvent('Dropped or resized', event);
-  }
+  // eventTimesChanged({
+  //   event,
+  //   newStart,
+  //   newEnd,
+  // }: CalendarEventTimesChangedEvent): void {
+  //   this.events = this.events.map((iEvent) => {
+  //     if (iEvent === event) {
+  //       return {
+  //         ...event,
+  //         start: newStart,
+  //         end: newEnd,
+  //       };
+  //     }
+  //     return iEvent;
+  //   });
+  //   this.handleEvent('Dropped or resized', event);
+  // }
 
   handleEvent(action: string, event: CalendarEvent): void {
     this.modalData = { event, action };
+    console.log(event.title)
     this.modal.open(this.modalContent, { size: 'lg' });
   }
 
-  addEvent(): void {
-    this.events = [
-      ...this.events,
-      {
-        title: 'New event',
-        start: startOfDay(new Date()),
-        end: endOfDay(new Date()),
-        color: colors.red,
-        draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true,
-        },
-      },
-    ];
-  }
-
   deleteEvent(eventToDelete: CalendarEvent) {
-    this.events = this.events.filter((event) => event !== eventToDelete);
+  }
+  saveEvent(eventToSave: CalendarEvent) {
+    console.log(eventToSave);
   }
 
   setView(view: CalendarView) {
@@ -191,5 +143,53 @@ export class CalendarComponent implements OnInit {
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
   }
- 
+  ngOnInit(): void {
+    this.fetchEvents();
+    this.agendar=this.service_agendar.getIsAgendado();
+    // this.flatpickrFactory();
+
+  }
+  
+  adjustForTimezone(date:Date):Date{
+    var timeOffsetInMS:number = date.getTimezoneOffset() * 60000;
+    date.setTime(date.getTime() + timeOffsetInMS);
+    return date
+  }
+
+  fetchEvents(): void {
+    this.events$ = this.http
+      .get('http://localhost:8000/api/get_consejerias/').pipe(    
+         map((  data  : any) => {
+          console.log(data);
+          const results=data;
+          return results.map((c: Consejeria) => {
+            return {
+              title: c.tema,
+              start: this.adjustForTimezone(new Date(c.empieza)),
+              end: this.adjustForTimezone(new Date(c.termina)),
+              id_: c.id,
+              color: colors.yellow,
+            };
+          });
+        })
+      );
+    }
+
+  agendar:boolean=this.service_agendar.getIsAgendado();
+  agendar_consejeria(event: CalendarEvent){
+    console.log("consejeria agendada...")
+    console.log(this.service_agendar.getIsAgendado())
+    if(this.service_agendar.getIsAgendado()==false){
+      /*Se agenda la cita */
+      this.service_agendar.setAgendado(true);
+      this.agendar=this.service_agendar.getIsAgendado();
+      this.showMessage=true;
+    }else if(this.service_agendar.getIsAgendado()==true){
+      console.log(this.service_agendar.getIsAgendado())
+
+    }
+  }
+  eventClicked({ event }: { event: CalendarEvent }): void {
+    console.log('Event clicked', event);
+  }
 }

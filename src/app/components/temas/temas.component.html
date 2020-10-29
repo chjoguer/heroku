@@ -91,12 +91,12 @@
                                </div>
                                 <div class="col-md-9">
                                     <div class="blog_post">
-                                        <img src="http://127.0.0.1:8000{{tema.images}}" style="width: 680px!important; height: 280px!important;" alt="">
+                                        <img src="{{url}}{{tema.images}}" style="width: 680px!important; height: 280px!important;" alt="">
                                         <div class="blog_details">
-                                            <a [routerLink]="['/tema-details',tema.id_tema,tema.categoria ]"><h2>{{tema.titulo| titlecase}}</h2></a>
+                                            <a [routerLink]="['/tema-details',tema.id_tema,tema.categoria]"><h2>{{tema.titulo| titlecase}}</h2></a>
 
                                             <div [innerHTML]="tema.descripcion | slice:0:300" style="text-align: justify;"></div>
-                                            <a [routerLink]="['/tema-details',tema.id_tema,tema.categoria ]" class="view_btn button_hover">Leer más</a>
+                                            <a [routerLink]="['/tema-details',tema.id_tema,tema.categoria]" class="view_btn button_hover">Leer más</a>
                                         </div>
                                     </div>
                                 </div>
@@ -148,7 +148,7 @@
                             <aside class="single_sidebar_widget post_category_widget">
                                 <h4 class="widget_title">Categorias</h4>
                                 <ul *ngFor="let ct of categorias" class="list_style cat-list">
-                                    <li>
+                                    <li  [ngClass]="{'active': selectedItem == ct.nombre_categoria}" (click)="listClick($event, ct.nombre_categoria)">
                                         <a  [routerLink]="['/temas',ct.id_categoria_tema ]" class="d-flex justify-content-between">
                                             <p>{{ct.nombre_categoria}}</p>
                                             <p></p>

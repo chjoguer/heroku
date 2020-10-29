@@ -11,7 +11,7 @@
     </div>
 </section>
 <!--================Breadcrumb Area =================-->
-<div>
+<!-- <div>
 <ngb-carousel *ngIf="images3"  style="width: 800px!important; margin: auto; ">
     <ng-template ngbSlide  style="height: 380px!important;">
       <div class="picsum-img-wrapper">
@@ -41,14 +41,14 @@
       </div>
     </ng-template>
 </ngb-carousel>
-</div>
+</div> -->
 <!--================Breadcrumb Area =================-->
 <section  class="gallery_area section_gap">
     <div  class="container">
         <div  class="row imageGallery1" id="gallery" >
             <div *ngFor="let img of images | paginate: { itemsPerPage: 9, currentPage: p  }" class="col-md-4 gallery_item">
                 <div  class="gallery_img">
-                    <img src="http://127.0.0.1:8000/media/{{img.image}}" style="width: 370px!important; height: 330px!important;"  alt="">
+                    <img src="{{url}}/media/{{img.image}}" style="width: 370px!important; height: 330px!important;"  alt="">
                     <div class="hover">
                         <a class="light" href="../../../assets/image/gallery/01.jpg"><i class="fa fa-expand"></i></a>
                     </div>

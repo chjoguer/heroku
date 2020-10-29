@@ -14,8 +14,14 @@
         </div>
     </div>
 </section>
+<ng-template #loading>
+  <div class="text-center">
+    <i class="fas fa-spin fa-spinner fa-5x"></i> <br />
+    Loading events...
+  </div>
+</ng-template>
 <!--================Breadcrumb Area =================-->
-  <div class="row text-center" style="margin-top: 7rem !important;">
+  <div class="row text-center " style="margin-top: 2rem !important; width: 90%;">
     <div class="col-md-4">
       <div class="btn-group">
         <div
@@ -70,12 +76,12 @@
   </div>
   <br />
 
-  <div [ngSwitch]="view">
+  <div [ngSwitch]="view" *ngIf="events$ | async; else loading; let events">
     <mwl-calendar-month-view
       *ngSwitchCase="CalendarView.Month"
       [viewDate]="viewDate"
       [locale]="locale"
-
+      
       [events]="events"
       [refresh]="refresh"
       [activeDayIsOpen]="activeDayIsOpen"
@@ -88,126 +94,55 @@
       *ngSwitchCase="CalendarView.Week"
       [viewDate]="viewDate"
       [locale]="locale"
-
+      [dayStartHour]="8"
+      [dayEndHour]="21"
       [events]="events"
       [refresh]="refresh"
       (eventClicked)="handleEvent('Clicked', $event.event)"
       (eventTimesChanged)="eventTimesChanged($event)"
     >
     </mwl-calendar-week-view>
-    
+    <br />
+
+    <div *ngIf="showMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Enviado!</strong> Se agendado su consejeria correctamente.
+      <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button> -->
+    </div>
   </div>
-  
-  <!-- Everything you see below is just for the demo, you don't need to include it in your app -->
   
   <br /><br /><br />
-<!--  
-  <h3>
-    Edit events
-    <button class="btn btn-primary float-right" (click)="addEvent()">
-      Add new
-    </button>
-    <div class="clearfix"></div>
-  </h3>
-  
-  <div class="table-responsive">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Primary color</th>
-          <th>Secondary color</th>
-          <th>Starts at</th>
-          <th>Ends at</th>
-          <th>Remove</th>
-        </tr>
-      </thead>
-  
-      <tbody>
-        <tr *ngFor="let event of events">
-          <td>
-            <input
-              type="text"
-              class="form-control"
-              [(ngModel)]="event.title"
-              (keyup)="refresh.next()"
-            />
-          </td>
-          <td>
-            <input
-              type="color"
-              [(ngModel)]="event.color.primary"
-              (change)="refresh.next()"
-            />
-          </td>
-          <td>
-            <input
-              type="color"
-              [(ngModel)]="event.color.secondary"
-              (change)="refresh.next()"
-            />
-          </td>
-          <td>
-            <input
-              class="form-control"
-              type="text"
-              mwlFlatpickr
-              [(ngModel)]="event.start"
-              (ngModelChange)="refresh.next()"
-              [altInput]="true"
-              [convertModelValue]="true"
-              [enableTime]="true"
-              dateFormat="Y-m-dTH:i"
-              altFormat="F j, Y H:i"
-              placeholder="Not set"
-            />
-          </td>
-          <td>
-            <input
-              class="form-control"
-              type="text"
-              mwlFlatpickr
-              [(ngModel)]="event.end"
-              (ngModelChange)="refresh.next()"
-              [altInput]="true"
-              [convertModelValue]="true"
-              [enableTime]="true"
-              dateFormat="Y-m-dTH:i"
-              altFormat="F j, Y H:i"
-              placeholder="Not set"
-            />
-          </td>
-          <td>
-            <button class="btn btn-danger" (click)="deleteEvent(event)">
-              Delete
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-   -->
+
   <ng-template #modalContent let-close="close">
     <div class="modal-header">
-      <h5 class="modal-title">Event action occurred</h5>
+      <h5 class="modal-title">Consejeria</h5>
       <button type="button" class="close" (click)="close()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
       <div>
-        Action:
-        <pre>{{ modalData?.action }}</pre>
+        Fecha Inicio:
+        <pre>{{ modalData?.event.start }}</pre>
+        Fecha Fin:
+        <pre>{{ modalData?.event.end }}</pre>
       </div>
       <div>
-        Event:
-        <pre>{{ modalData?.event | json }}</pre>
+        Tema de la consejeria:
+        <pre>{{ modalData?.event.title }}</pre>
+        <!-- <pre>{{ modalData?.event.id_ }}</pre> -->
+
       </div>
     </div>
     <div class="modal-footer">
+      <button *ngIf="!agendar" type="button" class="btn btn-outline-secondary" (click)="agendar_consejeria()">
+        Confirmar
+      </button>
       <button type="button" class="btn btn-outline-secondary" (click)="close()">
-        OK
+        Cerrar
       </button>
     </div>
+    
   </ng-template>
- 
+

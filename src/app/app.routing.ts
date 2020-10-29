@@ -11,20 +11,21 @@ import {TemasDetailsComponent } from './components/temas-details/temas-details.c
 import {ContactanosComponent } from './components/contactanos/contactanos.component';
 import {TemasComponent } from './components/temas/temas.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
-import { TestimoniosComponent } from './components/testimonios/testimonios.component';
 
+import { TestimoniosComponent } from './components/testimonios/testimonios.component';
+import { AuthGuard } from './components/authguard/auth.guard';
+import {LoginGuard} from './components/loginguard/login.guard'
 const routes: Routes = [
     { path: '', component: IndexComponent },
     { path: 'index', component: IndexComponent },
     { path: 'galeria', component: GalleryComponent },
-    { path: 'login', component: LoginComponent},
+    { path: 'login', component: LoginComponent,canActivate:[LoginGuard]},
     { path: 'contact', component: ContactanosComponent},
-    { path: 'calendar', component: CalendarComponent},
+    { path: 'calendar', component: CalendarComponent,canActivate:[AuthGuard]},
     { path: 'testimonios', component: TestimoniosComponent},
-
     { path: 'temas/:id_categoria', component: TemasComponent},
     { path: 'recuperar-contrasenia', component:ResetPasswordComponent },
-    { path: 'tema-details/:id/:id_categoria', component:TemasDetailsComponent, runGuardsAndResolvers: 'always'},
+    { path: 'tema-details/:id/:id_categoria', component:TemasDetailsComponent},
 
     // otherwise redirect to home
 ];

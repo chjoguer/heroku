@@ -32,14 +32,14 @@ export class IndexComponent implements OnInit {
       document.getElementById("container")
     );
   }
-  url: any = "http://127.0.0.1:8000/";
-  url_image: any = "http://127.0.0.1:8000";
+  
+  private url  = environment.apiUrl;
 
   temas=[];
   // persons: { [id: string] :  } = {};
   _temas:any=[];
   getTemasPrincipales(_http:HttpClient){
-    this._http.get(this.url+'getPrincipalesTemas/')
+    this._http.get(this.url+'/getPrincipalesTemas/')
     .subscribe(
       (data)=>{
         this._temas=data;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {GaleriaService} from '../gallery/service/galeria.service'
 import { Injectable } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-gallery',
@@ -15,6 +16,7 @@ export class GalleryComponent implements OnInit {
   images:any=[];
   p:number =1;
   images3 = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  private url  = environment.apiUrl;
 
   images2 = [700, 800, 807].map((n) => `https://picsum.photos/id/${n}/900/500`);
   constructor(

@@ -12,6 +12,7 @@ export class ContactanosComponent implements OnInit {
 
   registerForm: FormGroup;
   submitted = false;
+  showMessage=false;
 
   constructor(private formBuilder: FormBuilder,private contact_service: ContactanosService) { }  val:any;
   ngOnInit(): void {
@@ -35,6 +36,7 @@ export class ContactanosComponent implements OnInit {
     if (this.registerForm.invalid) {
         return;
     }
+    this.showMessage=true;
     this.contact_service.post_contactanos(this.registerForm.value).subscribe(
       (data)=>{
         console.log("OK");
