@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
     }else{
       this.showProfile= false;
       this.showLogin=true;
-      this.showClose=false;s
+      this.showClose=false;
     }
   }
   logout(){
