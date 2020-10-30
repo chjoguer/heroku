@@ -33,14 +33,15 @@ export class HeaderComponent implements OnInit {
     }else{
       this.showProfile= false;
       this.showLogin=true;
-      this.showClose=false;
+      this.showClose=false;s
     }
   }
   logout(){
     this.service_login.logout();
-    //location.href = "http://familyec.pythonanywhere.com/";
-     this.router.navigateByUrl('/');
-     console.log(this.service_login.authInstance.currentUser.get())
+    location.href = "http://familiav2.herokuapp.com/#/";
+    // this.router.navigateByUrl('/');
+  
+    console.log(this.service_login.authInstance.currentUser.get())
   }
  
 
