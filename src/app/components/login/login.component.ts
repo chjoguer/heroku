@@ -100,9 +100,10 @@ export class LoginComponent implements OnInit {
       this.showErrorMessage = true;
     }    
     );
-
-    
-
-
   }
+
+  register(){
+    this.router.navigateByUrl('/registrarse');
+  }
+
 }

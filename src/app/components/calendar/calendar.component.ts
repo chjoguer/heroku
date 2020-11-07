@@ -27,12 +27,13 @@ import {
 } from 'angular-calendar';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-import { environment } from 'src/environments/environment.prod';
+
 import flatpickr from 'flatpickr';
 import { Spanish } from 'flatpickr/dist/l10n/es';
 import { HttpClient } from '@angular/common/http';
 import {  map } from 'rxjs/operators';
 import {AgendarService} from './service/agendar.service'
+import { environment } from 'src/environments/environment.prod';
 registerLocaleData(localeEs);
 const colors: any = {
   red: {
@@ -68,8 +69,9 @@ interface Consejeria {
   
 })
 export class CalendarComponent implements OnInit {
-  
-private url: string = environment.apiUrl;
+  private url  = environment.apiUrl;
+
+
    flatpickrFactory() {
     flatpickr.localize(Spanish);
     return flatpickr;

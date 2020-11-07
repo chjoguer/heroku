@@ -60,7 +60,7 @@
     
     <div *ngIf="_temas?.length" class="container">
         <div class="row">
-            <div *ngFor="let tema of _temas" class="col-md-6" style="margin-top: 15px;">
+            <div *ngFor="let tema of _temas" class="col-md-6" style="margin-top: 15px;" [routerLink]="['/tema-details',tema.id,tema.id_categoria ]">
                 <div class="categories_post">
                     <!-- <img src="../../../assets/image/blog/cat-post/cat-post-3.jpg" alt="post"> -->
                     <img src="{{url}}{{tema.image}}"

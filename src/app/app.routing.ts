@@ -13,6 +13,7 @@ import {TemasComponent } from './components/temas/temas.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 
 import { TestimoniosComponent } from './components/testimonios/testimonios.component';
+import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './components/authguard/auth.guard';
 import {LoginGuard} from './components/loginguard/login.guard'
 const routes: Routes = [
@@ -26,7 +27,7 @@ const routes: Routes = [
     { path: 'temas/:id_categoria', component: TemasComponent},
     { path: 'recuperar-contrasenia', component:ResetPasswordComponent },
     { path: 'tema-details/:id/:id_categoria', component:TemasDetailsComponent},
-
+    { path: 'registrarse', component: RegisterComponent},
     // otherwise redirect to home
 ];
 NgModule({
