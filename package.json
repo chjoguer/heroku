@@ -33,6 +33,7 @@
     "flatpickr": "^4.6.6",
     "ngx-cookie-service": "^10.0.1",
     "ngx-pagination": "^5.0.0",
+    "postscribe": "^2.0.8",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

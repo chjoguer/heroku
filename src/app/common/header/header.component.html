@@ -16,7 +16,7 @@
                             <a *ngIf="showProfile" [routerLink]="['/calendar']">Mi Perfil</a>
                             <a *ngIf="showLogin" [routerLink]="['/login']" >Iniciar Sesion</a>
                             <a *ngIf="showClose" href="javascript.void(0)" (click)="logout()" >Cerrar Sesion</a>
-                            <a href="#">Donaciones</a>
+                            <a href="#" routerLink="/donacion" >Donaciones</a>
                         </div>
                     </div>
                 </div>
@@ -36,8 +36,9 @@
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav ml-auto">
                         <li [routerLinkActive]="['active']" class="nav-item"><a class="nav-link"  routerLink="/index">Inicio</a></li> 
-                        <li [routerLinkActive]="['active']" class="nav-item"><a class="nav-link" href="ministries.html">Tips</a></li>
+                        <li [routerLinkActive]="['active']" class="nav-item"><a class="nav-link" routerLink="/recomendacion">Tips</a></li>
                         <li [routerLinkActive]="['active']" class="nav-item"><a class="nav-link" routerLink="/testimonios">Testimonios</a></li>
+
                         <li [routerLinkActive]="['active']" class="nav-item"><a class="nav-link"  routerLink="/galeria">Galeria</a></li>
                         <li [routerLinkActive]="['active']" class="nav-item"><a class="nav-link" href="ministries.html">Nosotros</a></li>
 

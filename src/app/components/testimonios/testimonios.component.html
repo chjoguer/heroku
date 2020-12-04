@@ -70,6 +70,62 @@
         </div>
     </div>
 </section>
+<section class="event_blog_area section_gap">
+    <div class="container">
+        <div class="row ministries_info">
+            <div *ngFor="let testim of testimonios"  class="col-lg-4 col-md-6 col-sm-6">
+                <div class="event_post"  style="text-align: justify;">
+                    <img src="image/blog1.jpg" alt="">
+                    <a ><h2 class="event_title">{{testim.titulo | titlecase}}</h2></a>
+                    <p >{{testim.descripcion}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <!--================About Area =================-->
+<section class="about_area section_gap" style="padding-top: 1px!important;">
+    <div class="container">
+        <div class="comment-form">
+            <h4>Envianos tu testimonio</h4>
+            <form [formGroup]="registerForm" (ngSubmit)="sendTestimonios()" >
+                <div class="form-group form-inline">
+                  <div class="form-group col-lg-6 col-md-6 name">
+                    <input type="text" class="form-control"  formControlName="name" id="name" placeholder="Nombres" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nombres'"  [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                        <div *ngIf="f.name.errors.required">Los Nombres son requeridos</div>
+                    </div>
+                </div>
+                  <div class="form-group col-lg-6 col-md-6 email">
+                    <input type="email"  formControlName="email" class="form-control" id="email" placeholder="Correo" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Correo'" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email es requerido</div>
+                        <div *ngIf="f.email.errors.email">Email debe de ser una direccion valida</div>
+                    </div>
+                  </div>										
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control"  formControlName="title" id="subject" placeholder="Tema del testimonio" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tema del testimonio'" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+                    <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                        <div *ngIf="f.title.errors.required">El asunto es requerido</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control mb-10"  formControlName="description" rows="5" name="message" placeholder="Escriba su testimonio" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Escriba su testimonio'" required="" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
+                    <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                        <div *ngIf="f.description.errors.required">Tu opinion es requerida</div>
+                        <div *ngIf="f.description.errors.minlength">Minimo 10 caracateres debes de ingresar</div>
+                    </div>
+                </div>
+                <button type="submit" value="submit" (click)="set()" class="btn btn_hover btn_hover_two">Enviar</button>
+
+            </form>
+            <div  *ngIf="showError" role="alert" class="alert alert-warning alert-dismissible fade show"><strong >Lo sentimos!</strong> Debes de iniciar sesion para poder poder enviar tu testimonio. </div>
+            
+            <div *ngIf="showMessage" role="alert" class="alert alert-success alert-dismissible fade show"><strong >Envio exitoso!</strong>Tu testimonio ha sido enviado correctamente lo chequearemos para su respectiva publicación. </div>
+
+        </div>
+    </div>
+</section>
 
 <!--================About Area =================-->

@@ -16,6 +16,9 @@ import { TestimoniosComponent } from './components/testimonios/testimonios.compo
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './components/authguard/auth.guard';
 import {LoginGuard} from './components/loginguard/login.guard'
+import { TipsRecomendationsComponent } from './components/tips-recomendations/tips-recomendations.component';
+import { DonacionComponent } from './components/donacion/donacion.component';
+
 const routes: Routes = [
     { path: '', component: IndexComponent },
     { path: 'index', component: IndexComponent },
@@ -28,6 +31,9 @@ const routes: Routes = [
     { path: 'recuperar-contrasenia', component:ResetPasswordComponent },
     { path: 'tema-details/:id/:id_categoria', component:TemasDetailsComponent},
     { path: 'registrarse', component: RegisterComponent},
+    { path: 'recomendacion', component: TipsRecomendationsComponent},
+    { path: 'donacion', component: DonacionComponent},
+
     // otherwise redirect to home
 ];
 NgModule({

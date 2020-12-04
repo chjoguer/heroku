@@ -62,12 +62,10 @@
         <div class="row">
             <div *ngFor="let tema of _temas" class="col-md-6" style="margin-top: 15px;" [routerLink]="['/tema-details',tema.id,tema.id_categoria ]">
                 <div class="categories_post">
-                    <!-- <img src="../../../assets/image/blog/cat-post/cat-post-3.jpg" alt="post"> -->
                     <img src="{{url}}{{tema.image}}"
                         style="width: 468px!important; height: 200px!important; object-fit: cover!important;" alt="post">
                     <div class="categories_details">
                         <div class="categories_text">
-
                             <a [routerLink]="['/tema-details',tema.id,tema.id_categoria ]">
                                 <h5>{{tema.titulo | titlecase}}</h5>
                             </a>
@@ -76,45 +74,7 @@
                         </div>
                     </div>
                 </div>
-                
             </div>
-            <!-- <div class="col-md-6 ">
-                    <div class="categories_post">
-                        <img src="../../../assets/image/blog/cat-post/cat-post-2.jpg" alt="post">
-                        <div class="categories_details">
-                            <div class="categories_text">
-                                <a href="blog-details.html"><h5>Politics</h5></a>
-                                <div class="border_line"></div>
-                                <p>Be a part of politics</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mt-3">
-                    <div class="categories_post">
-                        <img src="../../../assets/image/blog/cat-post/cat-post-1.jpg" alt="post">
-                        <div class="categories_details">
-                            <div class="categories_text">
-                                <a href="blog-details.html"><h5>Food</h5></a>
-                                <div class="border_line"></div>
-                                <p>Let the food be finished</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mt-3">
-                    <div class="categories_post">
-                        <img src="../../../assets/image/blog/cat-post/cat-post-1.jpg" alt="post">
-                        <div class="categories_details">
-                            <div class="categories_text">
-                                <a href="blog-details.html"><h5>Food</h5></a>
-                                <div class="border_line"></div>
-                                <p>Let the food be finished</p>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
         </div>
     </div>
 </section>
@@ -168,7 +128,7 @@
                 <ng-template *ngFor="let tema of _temas" ngbSlide>
                     <div class="row">
                     <div class="col-md-6 d_flex" style="margin: auto;">
-                        <div class="about_content flex" style="text-align: center;">
+                        <div class="about_content flex" style="text-align: center;"> 
                             <h3 class="title_color">{{tema.categoria | titlecase}} </h3>
                             <p >
                                 inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed.                      
@@ -271,28 +231,7 @@
                     </div>
                 </div>
             </div>
-            <div class="item row">
-                <div class="col-lg-8">
-                    <div class="sermons_image">
-                        <img src="image/sermns.jpg" alt="">
-                        <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct
-                            standards especially in the workplace. That’s why it’s crucial that, as women, our behavior
-                            on the job is beyond reproach. inappropriate behavior is often laughed.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="sermons_content">
-                        <h3 class="title_color">Did not find your Package? Feel free to ask us. We‘ll make it for you
-                        </h3>
-                        <ul class="list_style sermons_category">
-                            <li><i class="lnr lnr-user"></i><span>Categories: </span><a href="#"> Travor James</a></li>
-                            <li><i class="lnr lnr-database"></i><span>Sermon Speaker: </span> Prayer</li>
-                            <li><i class="lnr lnr-calendar-full"></i><span>Date:</span> 5th may, 2018</li>
-                        </ul>
-                        <a href="#" class="btn_hover btn_hover_two">View More Details</a>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </div>
 </section> -->
