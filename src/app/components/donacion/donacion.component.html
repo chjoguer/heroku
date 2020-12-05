@@ -26,10 +26,6 @@
                 <div class="team_item2">
                     <div class="team_img2" >
                         <img src="../../../assets/image/donacion/bebida.png" style="height: 150px; width: 200px;  background-size: cover;" alt="">
-                        <ul class="list_style">
-                            <button  (click)="donateBebida()" class="btn_hover btn_hover_two js-payment-checkout2">Donar</button>
-
-                        </ul>
                     </div>
                     <div class="content">
                         <h3>Botella de agua</h3>
@@ -43,10 +39,6 @@
                 <div class="team_item2">
                     <div class="team_img2">
                         <img src="../../../assets/image/donacion/canasta.png" style="height: 150px; width: 200px;" alt="">
-                        <ul class="list_style">
-                            <button   (click)="donateCanasta()" class="btn_hover btn_hover_two js-payment-checkout2">Donar</button>
-
-                        </ul>
                     </div>
                     <div class="content">
                         <h3>Canasta de alimentos</h3>
@@ -60,12 +52,6 @@
                 <div class="team_item2">
                     <div class="team_img2">
                         <img src="../../../assets/image/donacion/frutas.png" style="height: 150px; width: 200px;" alt="">
-                        <ul class="list_style">
-                            <!-- <button  (click)="openPaymentez()" class="btn_hover btn_hover_two js-payment-checkout">Donar</button> -->
-                            <!-- <button  (click)="openPaymentez()" class="btn_hover btn_hover_two js-payment-checkout">Donar</button> -->
-                            <button   (click)="donateFrutas()" class="btn_hover btn_hover_two js-payment-checkout2">Donar</button>
-
-                        </ul>
                     </div>
                     <div class="content">
                         <h3>Canasta de frutas</h3>
@@ -79,16 +65,25 @@
                 <div class="team_item2" >
                     <div class="team_img2">
                         <img src="../../../assets/image/donacion/hamburguesa.png"  style="height: 150px; width: 200px;" alt="">
-                        <ul class="list_style">
-                            <button  (click)="donateHamburger()" class="btn_hover btn_hover_two js-payment-checkout2">Donar</button>
-
-                        </ul>
                     </div>
                     <div class="content">
                         <h3>Hamburguesa</h3>
                         <p>Valor $3,50</p>
                         <strong><p>Cantidad a donar</p></strong>
                         <input [ngModel]="val_hamburger" placeholder="0" (ngModelChange)="onGeneralHamburger($event)" type="number" class="form-control mx-auto"  style="margin-top: -3px!important; width: 150px;" min="0">
+                    </div>
+                </div>
+            </div>
+            <div class="section_title text-center a mx-auto">
+                <p></p>
+                <h4>Valor de tu donación: </h4>
+                <div class="row">
+                    <input disabled id="donacionObjetos" [ngModel]="" placeholder="$0.00" type="text" class="form-control mx-auto"  style="margin-top: -3px!important; width: 150px;" min="0">
+                    <div class="col-4">
+                        <a (click)="updateValorTotal()" class="btn_hover btn_hover_two">Actualizar</a>
+                    </div>
+                    <div class="col-4">
+                        <a (click)="donateObjetos()" class="btn_hover btn_hover_two">Donar</a>
                     </div>
                 </div>
             </div>
@@ -115,15 +110,12 @@
                     <div class="row">
                         <div class="col-8">
                             <input type="number" placeholder="$0.00"  [ngModel]="val_general" (ngModelChange)="onGeneralChange($event)" class="form-control"  style="margin-top: 15px!important;" min="0">
-
                         </div>
                         
                         <div class="col-4">
-                            <a  (click)="donateGeneral()" class="btn_hover btn_hover_two">Donar</a>
-
+                            <a (click)="donateGeneral()" class="btn_hover btn_hover_two">Donar</a>
                         </div>
                     </div>
-                   
                 </div>
             </div>
         </div>
