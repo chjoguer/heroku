@@ -143,6 +143,8 @@ export class DonacionComponent implements AfterViewInit  {
     onOpen: function () {
       console.log('modal open');
       console.log('${donate}');
+      console/log("Herrreeeeeee")
+
     },
     onClose: function () {
       console.log('modal closed');
@@ -169,6 +171,8 @@ export class DonacionComponent implements AfterViewInit  {
           }
         }
       */
+
+      console/log("Herrreeeeeee")
       console.log('modal response');
       document.getElementById('response').innerHTML = JSON.stringify(response);
     }
@@ -213,7 +217,11 @@ export class DonacionComponent implements AfterViewInit  {
     // $('#response').innerHTML=""
     // $('#response').innerHTML=""
     postscribe('#response2', `
+    <script src="https://cdn.paymentez.com/ccapi/sdk/payment_checkout_stable.min.js"></script>
+
     <script> 
+    Payment.init('stg', 'INNOVA-EC-CLIENT', 'ZjgaQCbgAzNF7k8Fb1Qf4yYLHUsePk');
+
     console.log('postscribe')
     var paymentCheckoutG =""
     var paymentCheckoutG = new PaymentCheckout.modal({
@@ -224,6 +232,7 @@ export class DonacionComponent implements AfterViewInit  {
     onOpen: function () {
       console.log('modal open');
       console.log('${donate}');
+      console.log("herrreee/////.....")
     },
     onClose: function () {
       console.log('modal closed');
@@ -250,8 +259,12 @@ export class DonacionComponent implements AfterViewInit  {
           }
         }
       */
+     console.log("response")
+     console.log(response)
       console.log('modal response');
       document.getElementById('response').innerHTML = JSON.stringify(response);
+      document.getElementById('response2').innerHTML = "hola munod";
+
     }
     });
     var btnOpenCheckoutG =""
@@ -260,10 +273,10 @@ export class DonacionComponent implements AfterViewInit  {
 
       paymentCheckoutG.open({
         user_id: '1234',
-        user_email: '', //optional
-        user_phone: '', //optional
-        order_description: 'donation',
-        order_amount:${donate},
+        user_email: 'jhon@doe.com', //optional
+        user_phone: '7777777777', //optional
+        order_description: '1 Green Salad',
+        order_amount:5,
         order_vat: 0,
         order_reference: '#234323411',
         //order_installments_type: 2, // optional: The installments type are only available for Equador. The valid values are: https://paymentez.github.io/api-doc/#installments-type

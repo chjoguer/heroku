@@ -21,6 +21,7 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     console.log("aquie");
     this.getTemasPrincipales(this._http);
+    this.getTestimonio(this._http);
   }
   ngAfterViewInit(): void {
     (<any>window).twttr.widgets.load();
@@ -54,5 +55,21 @@ export class IndexComponent implements OnInit {
       ,()=>console.log("solicitud finalizada OK")
       )
   }
+  _nosotros:any;
+  getTestimonio(_http:HttpClient){
+    this._http.get(this.url+'/api/getNosotros/')
+    .subscribe(
+      (data)=>{
+        this._nosotros=data;
+        console.log(data)
+      }
+      ,(err: HttpErrorResponse)=>{console.log("Un error ha ocurrido")}
+      ,()=>console.log("solicitud finalizada OK")
+      )
+  }
+
+
+
+  
         
 }

@@ -18,6 +18,7 @@ import { AuthGuard } from './components/authguard/auth.guard';
 import {LoginGuard} from './components/loginguard/login.guard'
 import { TipsRecomendationsComponent } from './components/tips-recomendations/tips-recomendations.component';
 import { DonacionComponent } from './components/donacion/donacion.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
     { path: '', component: IndexComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
     { path: 'registrarse', component: RegisterComponent},
     { path: 'recomendacion', component: TipsRecomendationsComponent},
     { path: 'donacion', component: DonacionComponent},
+    { path: 'profile', component: ProfileComponent,canActivate:[AuthGuard]},
 
     // otherwise redirect to home
 ];

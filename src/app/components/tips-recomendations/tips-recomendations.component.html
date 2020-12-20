@@ -2,7 +2,7 @@
  <section class="breadcrumb_area br_image " style="margin-top: 7rem !important;">
     <div class="container">
         <div class="page-cover text-center">
-            <h2 class="page-cover-tittle">Recomendaciones </h2>
+            <h2 class="page-cover-tittle">Tips y Recomendaciones </h2>
             <ol class="breadcrumb">
                 <li><a href="index.html">Inicio</a></li>
                 <li class="active">Tips</li>
@@ -10,7 +10,34 @@
         </div>
     </div>
 </section>
+<section class="about_area section_gap" style="padding-top: 1px!important;">
+    <div class="container">
+        <div class="section_title text-center">
+        <div *ngFor="let tip of tips | paginate: { itemsPerPage: 2, currentPage: p  }"  class="row" style="padding-top: 5%!important;">
+            <div class="col-md-6">
+                <div class="about_content flex" style="text-align: center;">
+                    <h3 class="title_color">{{tip.titulo| titlecase}}</h3>
+                    <div [innerHTML]="tip.descripcion" style="text-align: justify;"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img class="" src="{{mediaUrl}}/{{tip.image}}" style="width: 570px;height: 300px; object-fit: cover!important;">
+            </div>
+        </div>
+        <br/>
+    </div>
+    <pagination-controls (pageChange)="p = $event" style="text-align: center; margin: auto;" 
+        maxSize="6"
+        directionLinks="true"
+        autoHide="true"
+        responsive="true"
+        previousLabel="Anterior"
+        nextLabel="Siguiente"
+    ></pagination-controls>
+    </div>
+</section>
 <!--================Breadcrumb Area =================-->
+<!--
 <section class="about_area section_gap" style="padding-top: 1px!important;">
     <div class="container">
         <div class="section_title text-center">
@@ -106,9 +133,9 @@
         </div>
     </div>
 </section>
-
+-->
 <!--================About Area =================-->
-
+<!--
 <section class="event_blog_area section_gap">
     <div class="container">
         <div class="row">
@@ -151,6 +178,7 @@
         </div>
     </div>
 </section>
+-->
 <!--================About Area =================-->
 
 <!--================About Area =================-->

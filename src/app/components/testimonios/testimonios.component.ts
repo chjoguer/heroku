@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {TestimoniosService} from '../testimonios/testimonios.service'
+import {TestimoniosService} from '../testimonios/testimonios.service';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 @Component({
   selector: 'app-testimonios',
   templateUrl: './testimonios.component.html',
   styleUrls: ['./testimonios.component.css']
 })
 export class TestimoniosComponent implements OnInit {
+
+  p:number =1;
+  testimonios: any[];
 
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
@@ -15,7 +20,6 @@ export class TestimoniosComponent implements OnInit {
   showMessage=false;
   showError=false;
   constructor(private serviceTestimonios: TestimoniosService, private formBuilder: FormBuilder,) { }
-  testimonios:any;
 
 
   ngOnInit(): void {
@@ -69,7 +73,12 @@ export class TestimoniosComponent implements OnInit {
     this.serviceTestimonios.get_testimonios().subscribe((data)=>{
       console.log("...sas...")
       console.log(data)
-      this.testimonios=data;
+      let response = [];
+      for (let i = 0; i < data.length; i++) {
+        response[i] = data[data.length-1-i];
+      }
+      console.log(response);
+      this.testimonios=response;
     },
     (error)=>{
       console.log(error)

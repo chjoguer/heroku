@@ -26,6 +26,7 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { FlatpickrModule } from 'angularx-flatpickr';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -38,6 +39,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {CalendarNativeDateFormatter, DateFormatterParams,CalendarModule} from 'angular-calendar';
 import { RegisterComponent } from './components/register/register.component';
 import { DonacionComponent } from './components/donacion/donacion.component';
+// import { ProfileComponent } from './profile/profile.component';
 
 class CustomDateFormatter extends CalendarNativeDateFormatter {
 
@@ -67,6 +69,7 @@ class CustomDateFormatter extends CalendarNativeDateFormatter {
     PoliticasComponent,
     RegisterComponent,
     DonacionComponent,
+    ProfileComponent,
 
   ],
   imports: [

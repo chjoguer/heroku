@@ -243,10 +243,10 @@
             <p>Colaboradores que ayudan a mantener este sitio</p>
         </div>
         <div class="row mb_30">
-            <div class="col-md-3 col-sm-6">
+            <div *ngFor="let o of _nosotros " class="col-md-3 col-sm-6">
                 <div class="team_item">
                     <div class="team_img">
-                        <img src="../../../assets/image/team1.jpg" alt="team">
+                        <img src="{{url}}/media/{{o.image}}" style="height: 300px;" alt="team">
                         <ul class="list_style">
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -254,28 +254,13 @@
                         </ul>
                     </div>
                     <div class="content">
-                        <h3>Philip Goodwin</h3>
-                        <p>Ing. Mecanica</p>
+                        <h3>{{o.nombre_completo}}</h3>
+                        <p>{{o.estudios}}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="team_item">
-                    <div class="team_img">
-                        <img src="../../../assets/image/team2.jpg" alt="team">
-                        <ul class="list_style">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="content">
-                        <h3>Duane Lewis</h3>
-                        <p>Ing. Biologia</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
+           
+            <!-- <div class="col-md-3 col-sm-6">
                 <div class="team_item">
                     <div class="team_img">
                         <img src="../../../assets/image/team5.jpg" alt="team">
@@ -306,7 +291,7 @@
                         <p>Ing. Alimentos</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </section>
