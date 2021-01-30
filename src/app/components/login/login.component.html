@@ -37,6 +37,7 @@
                     </div>
 
 
+                    <p *ngIf="showErrorMessage"><b>Error en el usuario o contraseña</b></p>
 
                     <div class="container-login100-form-btn">
                         <button type="submit" class="login100-form-btn" (click)="login()">
@@ -54,8 +55,7 @@
 							Regresar
 						</span>
 					</div>
-					<strong>User:</strong> {{user?.getBasicProfile().getEmail() | json}}, {{user?.getBasicProfile().getId() | json}} 
-
+					<!-- <strong>User:</strong> {{user?.getBasicProfile().getEmail() | json}}, {{user?.getBasicProfile().getId() | json}}  -->
 
                     <div class="login100-form-social flex-c-m">
                         <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">

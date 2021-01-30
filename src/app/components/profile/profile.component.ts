@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -29,6 +30,10 @@ export class ProfileComponent implements OnInit {
  public email:string;
  public edad:number;
  public sexo:string;
+
+ /*Date*/
+ inicio_d:any
+ termina_d:any
 
 //  public nombre:string;
 
@@ -134,7 +139,22 @@ export class ProfileComponent implements OnInit {
         this.email=data['Email']
         this.edad=data['Edad']
         this.sexo=data['Sexo']
-
+        if(data['estado']!=0){
+          this.inicio_d=new Date(data['inicio'])
+          this.termina_d=new Date(data['termina'])
+          const locale = 'es-EC';
+          var timeOffsetInMS:number = this.inicio_d.getTimezoneOffset() * 60000;
+          this.inicio_d.setTime(this.inicio_d.getTime() + timeOffsetInMS);
+          const formattedDate = formatDate(this.inicio_d, "yyyy-m-d h:m", locale);
+          this.inicio_d=formattedDate;
+          var timeOffsetInMS:number = this.termina_d.getTimezoneOffset() * 60000;
+          this.termina_d.setTime(this.termina_d.getTime() + timeOffsetInMS);
+          const formattedDate2 = formatDate(this.termina_d, "yyyy-m-d h:m", locale);
+          this.termina_d=formattedDate2;
+  
+          console.log(this.inicio_d)
+        }
+     
       },
       (error)=>{
         console.log(error)

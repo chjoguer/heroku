@@ -57,7 +57,7 @@ export class TemasDetailsComponent implements OnInit {
       });
       this.service_tema.get_videoByTema(this.id_tema).subscribe(data=>{
         this.videos_temas=data;
-        this.video = this.transform('http://www.youtube.com/embed/'+this.videos_temas[0].url)
+        this.video = this.transform('https://www.youtube.com/embed/'+this.videos_temas[0].url)
         console.log(this.video);
       });
 
@@ -87,7 +87,8 @@ export class TemasDetailsComponent implements OnInit {
 
     this.service_tema.get_videoByTema(this.id_tema).subscribe(data=>{
       this.videos_temas=data;
-      this.video = this.transform('http://www.youtube.com/embed/'+this.videos_temas[0].url)
+      this.video = this.transform('https://www.youtube.com/embed/'+this.videos_temas[0].url)
+      //this.video = 'https://www.youtube.com/embed/'+this.videos_temas[0].url
       console.log(this.video);
     });
   }

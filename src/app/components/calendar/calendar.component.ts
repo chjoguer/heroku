@@ -157,6 +157,34 @@ export class CalendarComponent implements OnInit {
     date.setTime(date.getTime() + timeOffsetInMS);
     return date
   }
+id:any;
+username:any;
+postAgendarCita(id:any){
+  // const formData = new FormData();
+  // formData.append('user', localStorage.getItem('user'));
+  // formData.append('nombre', this.nombre);
+  // formData.append('apellido', this.apellido);
+  // formData.append('email', this.email);
+  // formData.append('edad', '22');
+  const form={
+    'username':localStorage.getItem('user'),
+    'id':id,
+  }
+  console.log(form)
+  // formData.append('file', this.registerForm.get('profile').value);
+  // console.log(this.registerForm)
+  this.service_agendar.post_agendar_consejerias(form).subscribe(
+    (data)=>{
+      console.log(data);
+      // this.onReset();
+    },
+    (error)=>{
+      console.log(error);
+      // this.showError=true;
+    }
+)
+}
+
 
   fetchEvents(): void {
     this.events$ = this.http
@@ -178,11 +206,14 @@ export class CalendarComponent implements OnInit {
     }
 
   agendar:boolean=this.service_agendar.getIsAgendado();
-  agendar_consejeria(event: CalendarEvent){
+  agendar_consejeria(event: any){
     console.log("consejeria agendada...")
     console.log(this.service_agendar.getIsAgendado())
     if(this.service_agendar.getIsAgendado()==false){
       /*Se agenda la cita */
+      console.log("title...")
+      console.log(event)
+      this.postAgendarCita(event);
       this.service_agendar.setAgendado(true);
       this.agendar=this.service_agendar.getIsAgendado();
       this.showMessage=true;
@@ -194,4 +225,6 @@ export class CalendarComponent implements OnInit {
   eventClicked({ event }: { event: CalendarEvent }): void {
     console.log('Event clicked', event);
   }
+
+
 }

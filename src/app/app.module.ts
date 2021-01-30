@@ -39,6 +39,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {CalendarNativeDateFormatter, DateFormatterParams,CalendarModule} from 'angular-calendar';
 import { RegisterComponent } from './components/register/register.component';
 import { DonacionComponent } from './components/donacion/donacion.component';
+import { NosotrosComponent } from './components/nosotros/nosotros.component';
 // import { ProfileComponent } from './profile/profile.component';
 
 class CustomDateFormatter extends CalendarNativeDateFormatter {
@@ -70,6 +71,7 @@ class CustomDateFormatter extends CalendarNativeDateFormatter {
     RegisterComponent,
     DonacionComponent,
     ProfileComponent,
+    NosotrosComponent,
 
   ],
   imports: [

@@ -1,0 +1,53 @@
+ <!--================Breadcrumb Area =================-->
+ <section class="breadcrumb_area br_image " style="margin-top: 7rem !important;">
+    <div class="container">
+        <div class="page-cover text-center">
+            <h2 class="page-cover-tittle">Nosotros</h2>
+            <ol class="breadcrumb">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="active">Nosotros</li>
+            </ol>
+        </div>
+    </div>
+</section>
+<!-- <div class="whole-wrap">
+    <div class="container">
+        <div class="section-top-border">
+            <div class="row">
+                <h3>Nuestro Equipo</h3>
+                <div class="col-lg-12">
+                    <blockquote class="generic-blockquote">
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!--================Sermons work Area=================-->
+<section class="team_area section_gap">
+    <div class="container">
+        <div class="section_title text-center">
+            <p>Colaboradores que ayudan a mantener este sitio</p>
+        </div>
+        <div class="row mb_30">
+            <div *ngFor="let o of _nosotros | slice:0:4" class="col-md-3 col-sm-6">
+                <div class="team_item">
+                    <div class="team_img">
+                        <img src="{{url}}/media/{{o.image}}" style="height: 300px;" alt="team">
+                        <ul class="list_style">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="content">
+                        <h3>{{o.nombre_completo}}</h3>
+                        <p>{{o.estudios}}</p>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</section>
+

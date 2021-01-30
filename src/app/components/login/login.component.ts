@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   message: string;
   showErrorMessage: boolean;
   isLogin:boolean=false;
-
+  
   constructor(public service_login: LoginService, public router: Router) {}
 
   async initGoogleAuth(): Promise<void> {

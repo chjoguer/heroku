@@ -14,12 +14,7 @@
 
 
 </section>
-
-
-
 <!--================Breadcrumb Area =================-->
-
-
 <body class="profile-page">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -35,21 +30,24 @@
 	                <div class="col-md-6 ml-auto mr-auto">
         	           <div class="profile">
 	                        <div class="avatar">
-                                <img src="{{url}}{{data_profile.Image}}" style="height: 164px!important; width: 280px!important;" alt="Circle Image" class="img-raised rounded-circle img-fluid"> 
+                                <img src="{{url}}{{data_profile.Image}}" onerror="this.src='../../../assets/image/avatar.png'"  style="height: 164px!important; width: 280px!important;" alt="Circle Image" class="img-raised rounded-circle img-fluid"> 
 	                            <!-- <img src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0NjQzOTk4OTQ4OTkyMzQy/ansel-elgort-poses-for-a-portrait-during-the-baby-driver-premiere-2017-sxsw-conference-and-festivals-on-march-11-2017-in-austin-texas-photo-by-matt-winkelmeyer_getty-imagesfor-sxsw-square.jpg" alt="Circle Image" class="img-raised rounded-circle img-fluid"> -->
 	                        </div>
 	                        <div class="name">
 	                            <h3  class="title">{{data_profile.Nombre}} {{data_profile.Apellido}}</h3>
 								<h6>{{data_profile.Email}}</h6>
-								<a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a>
+                                <!-- <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>-->
+                                <!-- <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a>  -->
+                                <!-- <h5  class="title">Enlace para la consejeria ZOOM</h5>
+
+                                <a href="https://us04web.zoom.us/j/2939684881?pwd=cDNidjJDNStQbWZuRElCd0hPNzA4dz09" target="_blank" class="btn btn-just-icon btn-link"><i class="fas fa-video"></i></a> -->
+
 	                        </div>
 	                    </div>
     	            </div>
                 </div>
                 <div class="description text-center">
-                    <p>An artist of considerable range, Chet Faker — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+                    <p> </p>
                 </div>
 				<div class="row">
 					<div class="col-md-8 ml-auto mr-auto">
@@ -77,6 +75,12 @@
                                 <a class="nav-link" href="#image" role="tab" data-toggle="tab">
                                   <i class="material-icons">image</i>
                                     Cambiar Imagen
+                                </a>
+                            </li>
+                            <li *ngIf="data_profile.estado!=0" class="nav-item">
+                                <a class="nav-link" href="#zoom" role="tab" data-toggle="tab">
+                                  <i class="material-icons">camera_alt</i>
+                                    Consejeria
                                 </a>
                             </li>
                           </ul>
@@ -279,7 +283,24 @@
                   </div>
                   <div *ngIf="showMessagePassword" role="alert" class="alert alert-success alert-dismissible fade show"><strong >Modificación exitoso!</strong>Cambio de contraseña exitoso!!. </div>
 
-      		</div>
+              </div>
+              <div class="tab-pane text-center gallery"  role="tabpanel" class="tab-pane fade"  id="zoom">
+                <div class="row">
+                    <div class="col-md-4 mx-auto justify-content-center ">   
+                        Usted tiene una consejeria pendiente. Por favor no olvidarse de asistir su consejero lo atendera  
+                        Desde <b>{{inicio_d}}</b> hasta <b>{{termina_d}}</b>
+                        
+                    </div>
+                    <br/>
+                    <br/>
+                    <div class="col-md-12 text-center mx-auto justify-content-center">
+                        <a href={{data_profile.consejeria}} target="_blank" class="btn btn_hover btn_hover_two center" >
+                            Abrir Zoom
+                        </a>
+                    </div>
+      				
+                  </div>
+            </div>
           </div>
 
         

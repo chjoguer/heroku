@@ -137,7 +137,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button *ngIf="!agendar" type="button" class="btn btn-outline-secondary" (click)="agendar_consejeria()">
+      <button *ngIf="!agendar" type="button" class="btn btn-outline-secondary" (click)="agendar_consejeria(modalData?.event.id_)">
         Confirmar
       </button>
       <button type="button" class="btn btn-outline-secondary" (click)="close()">

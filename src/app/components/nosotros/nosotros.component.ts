@@ -4,27 +4,24 @@ import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 
 @Component({
-  selector: 'app-politicas',
-  templateUrl: './politicas.component.html',
-  styleUrls: ['./politicas.component.css']
+  selector: 'app-nosotros',
+  templateUrl: './nosotros.component.html',
+  styleUrls: ['./nosotros.component.css']
 })
-export class PoliticasComponent implements OnInit {
-
-  public politicas:any;
+export class NosotrosComponent implements OnInit {
   private url  = environment.apiUrl;
+  constructor(public _http: HttpClient,private route: ActivatedRoute) {}
 
-  constructor(public _http: HttpClient,private route: ActivatedRoute) { 
-
-  }
   ngOnInit(): void {
-    this.getPoliticas(this._http);
+    this.getNosotros(this._http);
   }
 
-  getPoliticas(_http:HttpClient){
-    this._http.get(this.url+'/api/getPoliticas/')
+  _nosotros:any;
+  getNosotros(_http:HttpClient){
+    this._http.get(this.url+'/api/getNosotros/')
     .subscribe(
       (data)=>{
-        this.politicas=data;
+        this._nosotros=data;
         console.log(data)
       }
       ,(err: HttpErrorResponse)=>{console.log("Un error ha ocurrido")}

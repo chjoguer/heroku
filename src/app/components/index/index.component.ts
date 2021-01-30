@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import{ActivatedRoute} from "@angular/router";
 import { environment } from 'src/environments/environment.prod';
+import { TipsRecomendationsService } from '../tips-recomendations/tips-recomendations.service';
 
 declare var jQuery: any;
 
@@ -12,7 +13,7 @@ declare var jQuery: any;
 })
 export class IndexComponent implements OnInit {
 
-  constructor(public _http: HttpClient,private route: ActivatedRoute) { 
+  constructor(public _http: HttpClient,private route: ActivatedRoute,private serviceTips: TipsRecomendationsService) { 
 
   }
 
@@ -21,7 +22,8 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     console.log("aquie");
     this.getTemasPrincipales(this._http);
-    this.getTestimonio(this._http);
+    this.getNosotros(this._http);
+    this.getTips(this._http);
   }
   ngAfterViewInit(): void {
     (<any>window).twttr.widgets.load();
@@ -56,7 +58,7 @@ export class IndexComponent implements OnInit {
       )
   }
   _nosotros:any;
-  getTestimonio(_http:HttpClient){
+  getNosotros(_http:HttpClient){
     this._http.get(this.url+'/api/getNosotros/')
     .subscribe(
       (data)=>{
@@ -67,6 +69,26 @@ export class IndexComponent implements OnInit {
       ,()=>console.log("solicitud finalizada OK")
       )
   }
+  mediaUrl = environment.apiUrl+"/media/";
+  tips: any[];  
+  getTips(_http:HttpClient){
+    this.serviceTips.get_tips().subscribe((data)=>{
+      console.log("...sas...");
+      console.log(data);
+      let response = [];
+      for (let i = 0; i < data.length; i++) {
+        response[i] = data[data.length-1-i];
+      }
+      console.log(response);
+      this.tips=response;
+    },
+    (error)=>{
+      console.log(error)
+    }
+    )
+  }
+
+  
 
 
 
